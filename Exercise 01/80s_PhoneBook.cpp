@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 20:39:33 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/02 17:15:16 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:47:50 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,43 +42,48 @@ class PhoneBook {
 		
 };
 
-
-
 void PhoneBook::run()
 {
 	int index = 0;
+	int fixed_index = 0;
 	std::string input;
 	while (1)
 	{
+		std::cout<< ">>";
 		std::getline(std::cin, input);
 		if (input == "ADD")
 		{	
-			std::cout<< "set your fields please !" << std::endl;
-			if (index > 7)
-				index = 0;
+			std::cout<< "enter your contact's informations please!" << std::endl;
 			std::getline(std::cin, input);
-			contacts_list[index].set_f_name(input);
+			contacts_list[index % 8].set_f_name(input);
 			std::getline(std::cin, input);
-			contacts_list[index].set_l_name(input);
+			contacts_list[index % 8].set_l_name(input);
 			std::getline(std::cin, input);
-			contacts_list[index].set_n_name(input);
+			contacts_list[index % 8].set_n_name(input);
 			std::getline(std::cin, input);
-			contacts_list[index].set_p_number(input);
+			contacts_list[index % 8].set_p_number(input);
 			std::getline(std::cin, input);
-			contacts_list[index].set_d_secret(input);
+			contacts_list[index % 8].set_d_secret(input);
 			index++;
 		}
 		if (input == "SEARCH")
 		{
-			if (index > 7)
-				index = 7;
-			for (int i = 0; i <= 8; i++)
+			if (index % 8 != index)
+				fixed_index = 7;
+			else
+				fixed_index = index; 
+			for (int i = 0; i <= fixed_index; i++)
 			{
-				std::cout<< "|" << std::setw(10)  << contacts_list[in] << "|"<< std::endl;
-				std::cout<< "|gayoodfgh.|          |          |          |" << std::endl;
-				std::cout<< "|__________|__________|__________|__________|" << std::endl;
+				std::cout<< "|" << std::setw(10)  << "yoooo" << "|";
+				std::cout << std::setw(10)  << "yoooo" << "|";
+				std::cout << std::setw(10)  << "yoooo" << "|";
+				std::cout<< std::setw(10)  << "yoooo" << "|" << std::endl; 
+				std::cout<< "---------------------------------------------" << std::endl;
 			}
 		}
+		else
+			std::cout<< "enter a valide command please!" << std::endl;
+			
 	}
 
 
@@ -142,8 +147,9 @@ std::string Contact::get_d_secret()
 
 int main()
 {
-	std::cout<< "|" << std::setw(10)  << "" << "|"<< std::endl;
-	exit(0);
+	// std::string str = "1234567891010";
+	// std::cout<< "|" << std::setw(10)  << str.substr(0,9)+"." << "|"<< std::endl;
+	// exit(0);
 	PhoneBook _80s_pb;
 	_80s_pb.run();
 }
