@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 20:39:33 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/03 23:52:44 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/10/04 04:48:09 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ class Contact {
 		std::string get_p_number();
 		std::string get_d_secret();
 		std::string pars_field(std::string field);
-		int pars_input(std::string index);
+		int pars_infos(std::string field);
+		int pars_entered_index(std::string index);
 };
 
 class PhoneBook {
@@ -56,16 +57,26 @@ void PhoneBook::run()
 		if (input == "ADD")
 		{
 			std::cout<< "enter your contact's informations please!" << std::endl;
+			std::cout<< "first name: ";
 			std::getline(std::cin, input);
-			contacts_list[index % 8].set_f_name(input);
+			if (contacts_list[index].pars_infos(input) == 0)
+				contacts_list[index % 8].set_f_name(input);
+			std::cout<< "last name: ";
 			std::getline(std::cin, input);
-			contacts_list[index % 8].set_l_name(input);
+			else if (contacts_list[index].pars_infos(input) == 0)
+				contacts_list[index % 8].set_l_name(input);
+			std::cout<< "nickname: ";
 			std::getline(std::cin, input);
-			contacts_list[index % 8].set_n_name(input);
+			else if (contacts_list[index].pars_infos(input) == 0)
+				contacts_list[index % 8].set_n_name(input);
+			std::cout<< "phone number: ";
 			std::getline(std::cin, input);
-			contacts_list[index % 8].set_p_number(input);
+			else if (contacts_list[index].pars_infos(input) == 0)
+				contacts_list[index % 8].set_p_number(input);
+			std::cout<< "darkest secret: ";
 			std::getline(std::cin, input);
-			contacts_list[index % 8].set_d_secret(input);
+			else if (contacts_list[index].pars_infos(input) == 0)
+				contacts_list[index % 8].set_d_secret(input);
 			index++;
 		}
 		if (input == "SEARCH")
@@ -97,19 +108,19 @@ void PhoneBook::run()
 			std::cout<< "enter your contact's index please!" << std::endl;
 			std::getline(std::cin, input);
 			contact_index = atoi(input.c_str());
-			if (contacts_list[index].pars_input(input) == 0 && contacts_list[contact_index].get_f_name() != "")
+			if (contacts_list[index].pars_entered_index(input) == 0 && contacts_list[contact_index].get_f_name() != "")
 			{
-				std::cout<< contacts_list[contact_index].get_f_name() << std::endl;
-				std::cout<< contacts_list[contact_index].get_l_name() << std::endl;
-				std::cout<< contacts_list[contact_index].get_n_name() << std::endl;
-				std::cout<< contacts_list[contact_index].get_p_number() << std::endl;
-				std::cout<< contacts_list[contact_index].get_d_secret() << std::endl;
+				std::cout<< "first name: " << contacts_list[contact_index].get_f_name() << std::endl;
+				std::cout<< "laste name: " << contacts_list[contact_index].get_l_name() << std::endl;
+				std::cout<< "nickname: " << contacts_list[contact_index].get_n_name() << std::endl;
+				std::cout<< "phone number: " << contacts_list[contact_index].get_p_number() << std::endl;
+				std::cout<< "darkest secret: " << contacts_list[contact_index].get_d_secret() << std::endl;
 			}
 			else
-				std::cout<< "chill man..you don't have a contact with this index" << std::endl;
-				
+				std::cout<< "you don't have a contact with this index!" << std::endl;
 		}
-			
+		if (input == "EXIT")
+			exit (1);		
 	}
 		
 }
@@ -176,7 +187,34 @@ std::string Contact::pars_field(std::string field)
 	return (field);
 }
 
-int Contact::pars_input(std::string index)
+int Contact::pars_infos(std::string field)
+{
+	int i = 0;
+	int flag = 0;
+	
+	if (field.empty())
+	{
+		std::cout<< "your contact can't have an empty field." << std::endl;
+		return (1);
+	}	
+	while (field[i])
+	{
+		if (field[i] != ' ' && field[i] != '\t')
+		{
+			flag = 1;
+			break;
+		}
+		i++;
+	}
+	if (flag == 0)
+	{
+		std::cout<< "your contact can't have an empty field." << std::endl;
+		return (1);
+	}
+	return (0);
+}
+
+int Contact::pars_entered_index(std::string index)
 {
 	for (int i = 0; index[i]; i++)
 	{
