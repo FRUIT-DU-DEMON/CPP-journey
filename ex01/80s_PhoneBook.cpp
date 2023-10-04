@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 20:39:33 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/04 04:48:09 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/10/04 05:56:07 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,23 @@ void PhoneBook::run()
 			std::cout<< "enter your contact's informations please!" << std::endl;
 			std::cout<< "first name: ";
 			std::getline(std::cin, input);
-			if (contacts_list[index].pars_infos(input) == 0)
+			if (contacts_list[index % 8].pars_infos(input) == 0)
 				contacts_list[index % 8].set_f_name(input);
 			std::cout<< "last name: ";
 			std::getline(std::cin, input);
-			else if (contacts_list[index].pars_infos(input) == 0)
+			if (contacts_list[index % 8].pars_infos(input) == 0)
 				contacts_list[index % 8].set_l_name(input);
 			std::cout<< "nickname: ";
 			std::getline(std::cin, input);
-			else if (contacts_list[index].pars_infos(input) == 0)
+			if (contacts_list[index % 8].pars_infos(input) == 0)
 				contacts_list[index % 8].set_n_name(input);
 			std::cout<< "phone number: ";
 			std::getline(std::cin, input);
-			else if (contacts_list[index].pars_infos(input) == 0)
+			if (contacts_list[index % 8].pars_infos(input) == 0)
 				contacts_list[index % 8].set_p_number(input);
 			std::cout<< "darkest secret: ";
 			std::getline(std::cin, input);
-			else if (contacts_list[index].pars_infos(input) == 0)
+			if (contacts_list[index % 8].pars_infos(input) == 0)
 				contacts_list[index % 8].set_d_secret(input);
 			index++;
 		}
@@ -108,7 +108,7 @@ void PhoneBook::run()
 			std::cout<< "enter your contact's index please!" << std::endl;
 			std::getline(std::cin, input);
 			contact_index = atoi(input.c_str());
-			if (contacts_list[index].pars_entered_index(input) == 0 && contacts_list[contact_index].get_f_name() != "")
+			if (contacts_list[index].pars_entered_index(input) == 0 && contacts_list[contact_index].get_f_name() != "")//with a valide check on empty sting i'll no longer need it
 			{
 				std::cout<< "first name: " << contacts_list[contact_index].get_f_name() << std::endl;
 				std::cout<< "laste name: " << contacts_list[contact_index].get_l_name() << std::endl;
