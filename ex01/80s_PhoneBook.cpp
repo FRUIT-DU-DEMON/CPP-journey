@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 20:39:33 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/04 05:56:07 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/10/04 20:58:43 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ class Contact {
 		std::string nick_name;
 		std::string phone_number;
 		std::string darkest_secret;
+		//std::string input;--------> code a setter and a getter to access this in line 62 instead of input arg
 
 	public:
 		void set_f_name(std::string field);
@@ -32,7 +33,7 @@ class Contact {
 		std::string get_p_number();
 		std::string get_d_secret();
 		std::string pars_field(std::string field);
-		int pars_infos(std::string field);
+		int enter_infos(std::string input ,std::string field);
 		int pars_entered_index(std::string index);
 };
 
@@ -57,26 +58,16 @@ void PhoneBook::run()
 		if (input == "ADD")
 		{
 			std::cout<< "enter your contact's informations please!" << std::endl;
-			std::cout<< "first name: ";
-			std::getline(std::cin, input);
-			if (contacts_list[index % 8].pars_infos(input) == 0)
+			while (contacts_list[index % 8].enter_infos(input, "first name: ") == 1)
 				contacts_list[index % 8].set_f_name(input);
-			std::cout<< "last name: ";
-			std::getline(std::cin, input);
-			if (contacts_list[index % 8].pars_infos(input) == 0)
-				contacts_list[index % 8].set_l_name(input);
-			std::cout<< "nickname: ";
-			std::getline(std::cin, input);
-			if (contacts_list[index % 8].pars_infos(input) == 0)
-				contacts_list[index % 8].set_n_name(input);
-			std::cout<< "phone number: ";
-			std::getline(std::cin, input);
-			if (contacts_list[index % 8].pars_infos(input) == 0)
-				contacts_list[index % 8].set_p_number(input);
-			std::cout<< "darkest secret: ";
-			std::getline(std::cin, input);
-			if (contacts_list[index % 8].pars_infos(input) == 0)
-				contacts_list[index % 8].set_d_secret(input);
+			// while (contacts_list[index % 8].enter_infos(input, "last name: ") == 1)
+			// 	contacts_list[index % 8].set_l_name(input);
+			// while (contacts_list[index % 8].enter_infos(input, "nickname: ") == 1)
+			// 	contacts_list[index % 8].set_n_name(input);
+			// while (contacts_list[index % 8].enter_infos(input, "phone number: ") == 1)
+			// 	contacts_list[index % 8].set_p_number(input);
+			// while (contacts_list[index % 8].enter_infos(input, "darkest secret: ") == 1)
+			// 	contacts_list[index % 8].set_d_secret(input);
 			index++;
 		}
 		if (input == "SEARCH")
@@ -187,19 +178,21 @@ std::string Contact::pars_field(std::string field)
 	return (field);
 }
 
-int Contact::pars_infos(std::string field)
+int Contact::enter_infos(std::string input, std::string field)
 {
 	int i = 0;
 	int flag = 0;
 	
-	if (field.empty())
+	std::cout<< field;
+	std::getline(std::cin, input);
+	if (input.empty())
 	{
 		std::cout<< "your contact can't have an empty field." << std::endl;
 		return (1);
 	}	
-	while (field[i])
+	while (input[i])
 	{
-		if (field[i] != ' ' && field[i] != '\t')
+		if (input[i] != ' ' && input[i] != '\t')
 		{
 			flag = 1;
 			break;
