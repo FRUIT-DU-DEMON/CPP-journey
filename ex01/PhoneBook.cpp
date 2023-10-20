@@ -118,7 +118,7 @@ void PhoneBook::run()
 	std::cout<< "➜ HERE'S YOUR PHONEBOOK MANUAL: " << std::endl;
 	std::cout<< "ADD: TO ADD A CONTACT TO YOUR PHONEBOOK " << std::endl;
 	std::cout<< "SEARCH: TO GET YOUR CONTACT'S DETAILS " << std::endl;
-	std::cout<< "SEARCH: TO QUIT YOUR PHONEBOOK " << std::endl;
+	std::cout<< "EXIT: TO QUIT YOUR PHONEBOOK " << std::endl;
 	while (1)
 	{
 		std::cout<< "➜ ";
