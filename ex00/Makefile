@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/28 18:08:54 by hlabouit          #+#    #+#              #
-#    Updated: 2023/09/28 22:46:03 by hlabouit         ###   ########.fr        #
+#    Created: 2023/10/21 02:18:59 by hlabouit          #+#    #+#              #
+#    Updated: 2023/10/21 02:18:59 by hlabouit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
-CPPFILES = main.cpp
+NAME = 80s_PhoneBook
+CPPFILES = PhoneBook.cpp Contact.cpp the_80s_PhoneBook.cpp
 CPPOFILES = $(CPPFILES:%.cpp=%.o)
 CPPC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -19,16 +19,16 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 all: $(NAME)
 
 $(NAME) : $(CPPOFILES)
-	$(CPPC) $(CPPOFILES) -o $(NAME)
+	@$(CPPC) $(CPPOFILES) -o $(NAME)
 
-%.o : %.cpp megaphone.hpp
-	$(CPPC) $(CPPFLAGS) $< -c
+%.o : %.cpp PhoneBook.hpp
+	@$(CPPC) $(CPPFLAGS) $< -c
 
 clean:
-	rm -rf $(CPPOFILES)
+	@rm -rf $(CPPOFILES)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 
