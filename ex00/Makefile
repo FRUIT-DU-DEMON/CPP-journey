@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 80s_PhoneBook
-CPPFILES = PhoneBook.cpp Contact.cpp the_80s_PhoneBook.cpp
+NAME = main
+CPPFILES = main.cpp
 CPPOFILES = $(CPPFILES:%.cpp=%.o)
 CPPC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -21,7 +21,7 @@ all: $(NAME)
 $(NAME) : $(CPPOFILES)
 	@$(CPPC) $(CPPOFILES) -o $(NAME)
 
-%.o : %.cpp PhoneBook.hpp
+%.o : %.cpp
 	@$(CPPC) $(CPPFLAGS) $< -c
 
 clean:
