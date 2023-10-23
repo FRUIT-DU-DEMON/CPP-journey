@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 17:40:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/23 18:04:33 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/10/23 22:45:53 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -26,6 +26,12 @@ class Zombie {
 
 Zombie::Zombie(std::string zombie_name) : name(zombie_name) {}
 
+Zombie *newZombie(std::string name)
+{
+	Zombie *z3 = new Zombie(name);
+	return (z3);
+}
+
 void randomChump(std::string name)
 {
 	Zombie z2(name);
@@ -42,5 +48,5 @@ int main()
 	Zombie z1("makinch_dda7k");
 	z1.announce(); 
 	randomChump("makinch_lla3b");
-	
+	newZombie("ntoma_ma7tarmonach");
 }
