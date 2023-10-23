@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 17:40:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/23 01:38:29 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/10/23 03:29:31 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -24,10 +24,7 @@ class Zombie {
 		Zombie(std::string zombie_name);
 };
 
-Zombie::Zombie(std::string zombie_name)
-{
-	this->name = zombie_name;
-}
+Zombie::Zombie(std::string zombie_name) : name(zombie_name) {}
 
 void Zombie::announce()
 {
@@ -36,6 +33,6 @@ void Zombie::announce()
 
 int main()
 {
-	Zombie z1("ZZOOOOMMMMBIIIEEE");
+	Zombie z1("run_dumbass");
 	z1.announce();
 }
