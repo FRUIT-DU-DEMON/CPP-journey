@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 17:40:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/23 00:48:24 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/10/23 01:38:29 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -36,6 +36,6 @@ void Zombie::announce()
 
 int main()
 {
-	Zombie z1("MAKINCH_DDA7K");
+	Zombie z1("ZZOOOOMMMMBIIIEEE");
 	z1.announce();
 }
