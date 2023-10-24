@@ -1,27 +1,28 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 01:53:54 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/24 16:42:52 by hlabouit         ###   ########.fr       */
+/*   Created: 2023/10/24 16:41:24 by hlabouit          #+#    #+#             */
+/*   Updated: 2023/10/24 16:42:00 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include"Zombie.hpp"
 
-int main()
+void Zombie::set_name(std::string zombie_name)
 {
-	int N = 13;
-	std::string name = "run_dumbass";
-	if (N > 0)
-	{
-		Zombie *zombiizz = zombieHorde(N, name);
-		for (int i = 0; i < N; i++)
-			zombiizz[i].announce();
-		delete[] zombiizz;
-	}
-	return (0);
+	this->name = zombie_name;
+}
+
+Zombie::~Zombie()
+{
+	std::cout<< this->name << " is destroyed!" << std::endl;
+}
+
+void Zombie::announce()
+{
+	std::cout<< this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
