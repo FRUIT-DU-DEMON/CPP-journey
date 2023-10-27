@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:12:32 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/27 05:38:51 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:53:48 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -44,18 +44,18 @@ void Weapon::setType(const std::string &newType)
 class HumanA {
 	private :
 		std::string name;
-		Weapon &weapon;
+		Weapon &weaponA;
 	public :
 		HumanA(std::string person, Weapon &whichWeapon);
 		void attack();
 };
 
-HumanA::HumanA(std::string person, Weapon &whichWeapon) : name(person), weapon(whichWeapon) {}
+HumanA::HumanA(std::string person, Weapon &whichWeapon) : name(person), weaponA(whichWeapon) {}
 
 void HumanA::attack()
 {
-	std::cout<< &weapon.getType() << std::endl;
-	std::cout<< this->name << " attacks with their " << weapon.getType() << std::endl;
+	std::cout<< &weaponA.getType() << std::endl;
+	std::cout<< this->name << " attacks with their " << weaponA.getType() << std::endl;
 }
 //////////////// HumanA class ///////////////////////////////////////////////
 		
@@ -63,29 +63,29 @@ class HumanB {
 //////////////// HumanB class ///////////////////////////////////////////////
 	private :
 		std::string name;
-		Weapon *weapon;
+		Weapon *weaponB;
 	public :
 		HumanB(const std::string &person);
 		void attack();
 		void setWeapon(Weapon &whichWeapon);
 };
 
-HumanB::HumanB(const std::string &person) : name(person) {}
+HumanB::HumanB(const std::string &person) : name(person), weaponB(nullptr) {}
 
 void HumanB::attack()
 {
-		std::cout<< &weapon->getType() << std::endl;
+		std::cout<< &weaponB->getType() << std::endl;
 	
-	if (this->weapon != NULL)
-		std::cout<< this->name << " attacks with their " << weapon->getType() << std::endl;
+	if (this->weaponB != nullptr)
+		std::cout<< this->name << " attacks with their " << weaponB->getType() << std::endl;
 	else
-		std::cout<< this->name << " tta jib lbala" << std::endl;
+		std::cout<< this->name << " tta jib lbala!" << std::endl;
 		
 }
 
 void HumanB::setWeapon(Weapon &whichWeapon)
 {
-	this->weapon = &whichWeapon;
+	this->weaponB = &whichWeapon;
 }
 
 //////////////// HumanB class ///////////////////////////////////////////////
