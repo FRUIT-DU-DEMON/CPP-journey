@@ -6,19 +6,19 @@
 #    By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 23:13:03 by hlabouit          #+#    #+#              #
-#    Updated: 2023/10/27 16:53:53 by hlabouit         ###   ########.fr        #
+#    Updated: 2023/10/27 18:09:58 by hlabouit         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME = main
-CPPFILES = main.cpp
+NAME = attack
+CPPFILES = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 CPPOFILES = $(CPPFILES:%.cpp=%.o)
 CPPC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++11 #-w -w -w -g
+CPPFLAGS = -Wall -Wextra -Werror -g -std=c++98 #-w -w -w -g c++98
 
 all: $(NAME)
 
-$(NAME) : $(CPPOFILES)
+$(NAME) : $(CPPOFILES) #.hpp
 	@$(CPPC) $(CPPOFILES) -o $(NAME)
 
 %.o : %.cpp
