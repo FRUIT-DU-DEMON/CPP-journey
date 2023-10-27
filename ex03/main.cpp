@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:12:32 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/27 00:20:31 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/10/27 02:38:11 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -21,20 +21,19 @@ class Weapon {
 	private :
 		std::string type;
 	public :
-		Weapon(std::string whichType);
+		Weapon(std::string &whichType);
 		const std::string &getType();
-		void setType(std::string newType);
+		void setType(std::string &newType);
 };
 
-Weapon::Weapon(std::string whichType) : type(whichType) {}
+Weapon::Weapon(std::string &whichType) : type(whichType) {}
 
 const std::string &Weapon::getType()
 {
-	std::string &typeRef = type;
-	return (typeRef);
+	return (this->type);
 }
 
-void Weapon::setType(std::string newType)
+void Weapon::setType(std::string &newType)
 {
 	this->type = newType;
 }
@@ -47,11 +46,11 @@ class HumanA {
 		std::string name;
 		Weapon &weapon;
 	public :
-		HumanA(std::string person, Weapon whichWeapon);
+		HumanA(std::string &person, Weapon &whichWeapon);
 		void attack();
 };
 
-HumanA::HumanA(std::string person, Weapon whichWeapon) : name(person), weapon(whichWeapon) {}
+HumanA::HumanA(std::string &person, Weapon &whichWeapon) : name(person), weapon(whichWeapon) {}
 
 void HumanA::attack()
 {
@@ -65,12 +64,12 @@ class HumanB {
 		std::string name;
 		Weapon *weapon;
 	public :
-		HumanB(std::string person);
+		HumanB(std::string &person);
 		void attack();
 		void setWeapon(Weapon *whichWeapon);
 };
 
-HumanB::HumanB(std::string person) : name(person) {}
+HumanB::HumanB(std::string &person) : name(person) {}
 
 void HumanB::attack()
 {
@@ -79,8 +78,8 @@ void HumanB::attack()
 
 void HumanB::setWeapon(Weapon *whichWeapon)
 {
-	if (whichWeapon)
-		weapon = whichWeapon;
+	if (whichWeapon != nullptr)
+		this->weapon = whichWeapon;
 }
 
 //////////////// HumanB class ///////////////////////////////////////////////
