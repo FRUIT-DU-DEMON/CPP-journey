@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:12:32 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/27 05:15:14 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/10/27 05:38:51 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -54,6 +54,7 @@ HumanA::HumanA(std::string person, Weapon &whichWeapon) : name(person), weapon(w
 
 void HumanA::attack()
 {
+	std::cout<< &weapon.getType() << std::endl;
 	std::cout<< this->name << " attacks with their " << weapon.getType() << std::endl;
 }
 //////////////// HumanA class ///////////////////////////////////////////////
@@ -73,6 +74,8 @@ HumanB::HumanB(const std::string &person) : name(person) {}
 
 void HumanB::attack()
 {
+		std::cout<< &weapon->getType() << std::endl;
+	
 	if (this->weapon != NULL)
 		std::cout<< this->name << " attacks with their " << weapon->getType() << std::endl;
 	else
