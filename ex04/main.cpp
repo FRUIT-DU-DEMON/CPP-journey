@@ -6,15 +6,13 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 01:40:09 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/30 09:33:48 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:58:08 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include<iostream>
 #include<fstream>
 #include<string>
-#include<iomanip>
-#include<ctype.h>
 #include<cstdlib>
 
 
@@ -38,7 +36,7 @@ SedIsForLosers::SedIsForLosers(std::string av1, std::string av2, std::string av3
 	this->s2 = av3;
 }
 
-void SedIsForLosers::parsing(std::ifstream &input, std::ofstream &output)
+void SedIsForLosers::parsing(std::ifstream &input, std::ofstream &output)//streams cant be passed as a copy
 {
 	if (!input.is_open() || !output.is_open())
 	{
@@ -56,9 +54,10 @@ void SedIsForLosers::run()
 {
 	std::ifstream input(this->reading_file.c_str());
 	std::ofstream output(this->writing_file.c_str());
-	std::string line;
-	std::string buffer1;
-	std::string buffer2;
+	std::string line = "";
+	std::string buffer1 = "";
+	std::string buffer2 = "";
+	int flag = 404;
 	size_t position;
 	
 	parsing(input, output);
@@ -71,9 +70,14 @@ void SedIsForLosers::run()
 			buffer2 = line.substr(position + this->s1.length(), line.length());
 			line = buffer1 + this->s2 + buffer2;
 			position = line.find(this->s1);
+			flag = 777;
 		}
 		output<< line;
 	}
+	if (flag == 404)
+		std::cout<< "<" << this->s1 << "> doesn't exist within the file <" << this->reading_file << ">!" <<std::endl;
+	else
+		std::cout<< "every occurrence of <" << this->s1 << "> was replaced with <" << this->s2 << ">!" <<std::endl;
 	input.close();
 	output.close();
 }
