@@ -6,15 +6,15 @@
 #    By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/28 01:40:56 by hlabouit          #+#    #+#              #
-#    Updated: 2023/10/30 03:10:09 by hlabouit         ###   ########.fr        #
+#    Updated: 2023/10/30 12:16:21 by hlabouit         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME = main
-CPPFILES = main.cpp 
+NAME = SedLosers
+CPPFILES = main.cpp SedLosers.cpp
 CPPOFILES = $(CPPFILES:%.cpp=%.o)
 CPPC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 #-w -w -w -g c++98
+CPPFLAGS = -Wall -Wextra -Werror -g -std=c++98 #-w -w -w -g c++98
 
 all: $(NAME)
 
