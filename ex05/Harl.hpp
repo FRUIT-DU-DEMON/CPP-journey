@@ -1,25 +1,34 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 12:19:57 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/31 09:38:57 by hlabouit         ###   ########.fr       */
+/*   Created: 2023/10/31 09:37:07 by hlabouit          #+#    #+#             */
+/*   Updated: 2023/10/31 09:38:07 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include"Harl.hpp"
+#ifndef HARL_H
+# define HARL_H
 
-int main()
-{
-    Harl client;
+#include<fstream>            
+#include<iostream>            
+#include<string>  
+#include<iomanip>
+#include<ctype.h>  
+#include <cstdlib>
 
-    client.complain("DEBUG");
-    client.complain("INFO");
-    client.complain("WARNING");
-    client.complain("ERROR");
-    client.complain("mustFail");
-    return (0);
-}
+class Harl {
+    private :
+        void debug(void);
+        void info(void);
+        void warning(void);
+        void error(void);
+    public :
+        void complain(std::string level);
+        void (Harl::*pointer_to)();
+};
+
+#endif
