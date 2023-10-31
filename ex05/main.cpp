@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:19:57 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/31 06:43:02 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/10/31 09:28:12 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -26,6 +26,7 @@ class Harl {
         void error(void);
     public :
         void complain(std::string level);
+        void (Harl::*pointer_to)();
 };
 
 void Harl::debug()
@@ -50,10 +51,46 @@ void Harl::error()
 
 void Harl::complain(std::string level)
 {
+    int which_case = 0;
+    
+    if (level == "DEBUG")
+        which_case = 1;
+    else if (level == "INFO")
+        which_case = 2;
+    else if (level == "WARNING")
+        which_case = 3;
+    else if (level == "ERROR")
+        which_case = 4;
+    else
+    {
+        std::cout<< "invalid comment type!" << std::endl;
+        return;
+    }
+    switch (which_case) {
+        case 1:
+            this->pointer_to = &Harl::debug;
+            break;
+        case 2:
+            this->pointer_to = &Harl::info;
+            break;
+        case 3:
+            this->pointer_to = &Harl::warning;
+            break;
+        case 4:
+            this->pointer_to = &Harl::error;
+            break;
+    }
+    (this->*pointer_to)();
 }
 
 
 int main()
-{ 
-    
+{
+    Harl client;
+
+    client.complain("DEBUG");
+    client.complain("INFO");
+    client.complain("WARNING");
+    client.complain("ERROR");
+    client.complain("mustFail");
 }
