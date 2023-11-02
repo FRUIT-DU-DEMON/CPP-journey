@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 00:56:44 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/02 07:43:31 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/02 07:47:54 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -26,7 +26,7 @@ class ttsstt {
 	public:
 		ttsstt(int assign);//constructor
 		ttsstt(const ttsstt &oldObj);//copy constructor
-		ttsstt &chiHalwa=(const ttsstt &oldOObj);//Copy assignment operator
+		ttsstt &operator=(const ttsstt &oldOObj);//Copy assignment operator
 		void print();
 		void change(int changement);
 };
