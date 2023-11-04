@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 00:56:44 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/04 20:38:04 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/04 22:24:05 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -31,8 +31,30 @@ class Fixed {
 		int getRawBits() const;
 		void setRawBits(int const raw);
 		~Fixed();
-		
 };
+
+Fixed::Fixed()
+{
+	this->fpn = 0;
+	std::cout << "Default constructor is invoked" << std::endl;
+}
+
+Fixed::Fixed(const Fixed &primary)
+{
+	this->fpn = primary.fpn;
+	std::cout << "Copy constructor is invoked" << std::endl;
+}
+
+Fixed &Fixed::operator=(const Fixed &primary)
+{
+	//protection if self-assignment to avoid unnecessary work
+	if (this != &primary)
+		this->fpn = primary.fpn;
+	std::cout << "Copy assignment operator is invoked" << std::endl;
+	return (*this);
+}
+
+
 
 
 
