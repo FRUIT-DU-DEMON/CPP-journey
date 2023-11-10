@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:58:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/10 00:28:15 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/10 01:32:02 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -50,6 +50,11 @@ Fixed::Fixed(const float float_val)
     this->fpn = roundf(float_val * (1 << this->fpn_binary));//fpn holds the encoded form of the binary representation of the fixed point value with both int and fractional part
 }
 
+Fixed::Fixed(const int int_val)
+{
+	std::cout << "Float constructor invoked" << std::endl;
+    this->fpn = int_val << this->fpn_binary; //allocates (fpn_binary)bits for the fractional part
+}
 
 Fixed::Fixed()
 {
