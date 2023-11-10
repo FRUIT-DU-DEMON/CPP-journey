@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:58:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/10 04:21:36 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/10 04:39:29 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -57,15 +57,16 @@ Fixed::Fixed(const int int_val)
 
 float Fixed::toFloat() const
 {
-	float flpn = this->fpn / (1 << this->fpn_binary); // /256, the the encoded form converted back the a flpn;
+	float flpn = static_cast<float>(this->fpn); //otherwise shifting this->fpn / (1 << this->fpn_binary); // /256, the the encoded form converted back the a flpn;
 	return (flpn);
 }
 
 int Fixed::toInt() const
 {
-	int int_val = static_cast<int>(this->fpn) ;// otherwise shifting this->fpn >> this->fpn_binary;
+	int int_val = static_cast<int>(this->fpn) ; //otherwise shifting this->fpn >> this->fpn_binary;
 	return (int_val);
 }
+
 
 
 Fixed::Fixed()
