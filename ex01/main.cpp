@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:58:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/10 02:52:09 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/10 04:21:36 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -31,11 +31,11 @@ class Fixed {
 		Fixed();
 		Fixed(const Fixed &primary);
 		Fixed &operator=(const Fixed &primary);
-        //overloaded <<
-        Fixed(const int int_val);
-        Fixed(const float float_val);
-        float toFloat() const;
-        int toInt() const;
+		//overloaded <<
+		Fixed(const int int_val);
+		Fixed(const float float_val);
+		float toFloat() const;
+		int toInt() const;
 		int getRawBits() const;
 		void setRawBits(int const raw);
 		~Fixed();
@@ -45,22 +45,28 @@ class Fixed {
 
 Fixed::Fixed(const float float_val)
 {
-    
 	std::cout << "Float constructor invoked" << std::endl;
-    this->fpn = roundf(float_val * (1 << this->fpn_binary)); // *256, fpn holds the encoded form of the binary representation of the fixed point value with both int and fractional part
+	this->fpn = roundf(float_val * (1 << this->fpn_binary)); // *256, fpn holds the encoded form of the binary representation of the fixed point value with both int and fractional part
 }
 
 Fixed::Fixed(const int int_val)
 {
 	std::cout << "Float constructor invoked" << std::endl;
-    this->fpn = int_val << this->fpn_binary; //allocates (fpn_binary)bits for the fractional part by adding 8bits to the left
+	this->fpn = int_val << this->fpn_binary; //allocates (fpn_binary)bits for the fractional part by adding 8bits to the left
 }
 
 float Fixed::toFloat() const
 {
-    float flpn = this->fpn / (1 << this->fpn_binary); // /256, the the encoded form converted back the a flpn;
-    return (flpn);
+	float flpn = this->fpn / (1 << this->fpn_binary); // /256, the the encoded form converted back the a flpn;
+	return (flpn);
 }
+
+int Fixed::toInt() const
+{
+	int int_val = static_cast<int>(this->fpn) ;// otherwise shifting this->fpn >> this->fpn_binary;
+	return (int_val);
+}
+
 
 Fixed::Fixed()
 {
@@ -103,5 +109,5 @@ Fixed::~Fixed()
 
 int main()
 {
-    
+	
 }
