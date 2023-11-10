@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:58:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/09 22:19:31 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/10 00:28:15 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -25,7 +25,7 @@
 ///////////////////// class //////////////////////
 class Fixed {
 	private :
-		int fpn; //the big number is the binary representation of the fpn which is an encoded form
+		int fpn;
 		static const int fpn_binary = 8;
 	public :
 		Fixed();
@@ -41,6 +41,16 @@ class Fixed {
 		~Fixed();
 };
 ///////////////////// class //////////////////////
+
+
+Fixed::Fixed(const float float_val)
+{
+    
+	std::cout << "Float constructor invoked" << std::endl;
+    this->fpn = roundf(float_val * (1 << this->fpn_binary));//fpn holds the encoded form of the binary representation of the fixed point value with both int and fractional part
+}
+
+
 Fixed::Fixed()
 {
 	std::cout << "Default constructor invoked" << std::endl;
