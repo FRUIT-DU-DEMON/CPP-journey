@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:58:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/10 15:59:27 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/10 17:40:07 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -31,7 +31,6 @@ class Fixed {
 		Fixed();
 		Fixed(const Fixed &primary);
 		Fixed &operator=(const Fixed &primary);
-		//overloaded <<
 		Fixed(const int int_val);
 		Fixed(const float float_val);
 		float toFloat() const;
@@ -57,7 +56,7 @@ Fixed::Fixed(const int int_val)
 
 float Fixed::toFloat() const
 {
-	float flpn = this->fpn / (1 << this->fpn_binary); // /256, the encoded form converted back the a flpn;
+	float flpn = static_cast<float>(this->fpn) / (1 << this->fpn_binary); // /256, the encoded form converted back the a flpn;
 	return (flpn);
 }
 
@@ -90,6 +89,12 @@ Fixed &Fixed::operator=(const Fixed &primary)
 	return (*this);
 }
 
+std::ostream &operator<<(std::ostream &output_console, const Fixed &fp)
+{
+	output_console << fp.toFloat();
+	return (output_console);
+}
+
 int Fixed::getRawBits() const
 {
 	std::cout << "getRawBits member function called" << std::endl;
@@ -110,5 +115,6 @@ Fixed::~Fixed()
 
 int main()
 {
-	
+	Fixed o(2.15f);
+	std::cout<< o << std::endl;
 }
