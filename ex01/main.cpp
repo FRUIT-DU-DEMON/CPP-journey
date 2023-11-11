@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:58:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/11 00:08:03 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/11 00:54:02 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -46,14 +46,14 @@ Fixed::Fixed(const float float_val)
 {
 	std::cout << "Float constructor invoked" << std::endl;
 	//setRawbits instead!
-	this->fpn = roundf(float_val * (1 << this->fpn_binary)); // *256, fpn holds the encoded form of the binary representation of the fixed point value with both int and fractional part
+	setRawBits(roundf(float_val * (1 << this->fpn_binary))); // *256, fpn holds the encoded form of the binary representation of the fixed point value with both int and fractional part
 }
 
 Fixed::Fixed(const int int_val)
 {
-	std::cout << "Float constructor invoked" << std::endl;
+	std::cout << "Int constructor invoked" << std::endl;
 	//setRawbits instead!
-	this->fpn = int_val << this->fpn_binary; //allocates (fpn_binary)bits for the fractional part by adding 8bits to the left
+	setRawBits(int_val << this->fpn_binary); //allocates (fpn_binary)bits for the fractional part by adding 8bits to the left
 }
 
 float Fixed::toFloat() const
@@ -79,7 +79,7 @@ Fixed::Fixed()
 Fixed::Fixed(const Fixed &primary)
 {
 	std::cout << "Copy constructor invoked" << std::endl;
-	this->fpn = primary.getRawBits();
+	*this = primary;
 }
 
 Fixed &Fixed::operator=(const Fixed &primary)
@@ -87,7 +87,7 @@ Fixed &Fixed::operator=(const Fixed &primary)
 	//protection if self-assignment to avoid unnecessary work
 	std::cout << "Copy assignment operator invoked" << std::endl;
 	if (this != &primary)
-		this->fpn = primary.getRawBits();
+		setRawBits(primary.getRawBits());
 	return (*this);
 }
 
@@ -100,13 +100,11 @@ std::ostream &operator<<(std::ostream &output_console, const Fixed &fp)
 
 int Fixed::getRawBits() const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (this->fpn);
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
 	this->fpn = raw;
 }
 
@@ -118,9 +116,18 @@ Fixed::~Fixed()
 
 int main()
 {
-	Fixed obj(13.37f);
-	std::cout<< obj << std::endl;
-	std::cout<< obj.getRawBits() << std::endl;
-	std::cout<< obj.toFloat() << std::endl;
-	std::cout<< obj.toInt() << std::endl;
+	Fixed a;
+	Fixed const b( 10 );
+	Fixed const c( 42.42f );
+	Fixed const d( b );
+	a = Fixed( 1234.4321f );
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	return 0;
 }
