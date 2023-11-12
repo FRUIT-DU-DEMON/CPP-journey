@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 02:41:10 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/12 19:46:19 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/12 21:33:14 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -43,6 +43,12 @@ class Fixed {
 		int operator<=(const Fixed &primary) const;
 		int operator==(const Fixed &primary) const;
 		int operator!=(const Fixed &primary) const;
+		float operator+(const Fixed &primary) const;
+		float operator-(const Fixed &primary) const;
+		float operator*(const Fixed &primary) const;
+		float operator/(const Fixed &primary) const;
+		// void operator++();
+		// void operator--();
 		~Fixed();
 };
 //////////////// overloaded operators ////////////////
@@ -76,6 +82,35 @@ int Fixed::operator!=(const Fixed &primary) const
 	return (this->fpn != primary.fpn);
 }
 
+float Fixed::operator+(const Fixed &primary) const
+{
+	return (this->toFloat() + primary.toFloat());
+}
+
+float Fixed::operator-(const Fixed &primary) const
+{
+	return (this->toFloat() - primary.toFloat());
+}
+
+float Fixed::operator*(const Fixed &primary) const
+{
+	return (this->toFloat() * primary.toFloat());
+}
+
+float Fixed::operator/(const Fixed &primary) const
+{
+	return (this->toFloat() / primary.toFloat());
+}
+
+// void Fixed::operator++()
+// {
+// 	this->fpn++;
+// }
+
+// void Fixed::operator--()
+// {
+// 	this->fpn--;
+// }
 
 //////////////// overloaded operators ////////////////
 
