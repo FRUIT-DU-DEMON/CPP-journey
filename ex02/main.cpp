@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 02:41:10 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/12 03:57:52 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/12 19:46:19 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -36,8 +36,49 @@ class Fixed {
 		int toInt() const;
 		int getRawBits() const;
 		void setRawBits(int const raw);
+		// overloaded operators
+		int operator>(const Fixed &primary) const;
+		int operator<(const Fixed &primary) const;
+		int operator>=(const Fixed &primary) const;
+		int operator<=(const Fixed &primary) const;
+		int operator==(const Fixed &primary) const;
+		int operator!=(const Fixed &primary) const;
 		~Fixed();
 };
+//////////////// overloaded operators ////////////////
+int Fixed::operator>(const Fixed &primary) const
+{
+	return (this->fpn > primary.fpn);
+}
+
+int Fixed::operator<(const Fixed &primary) const
+{
+	return (this->fpn < primary.fpn);
+}
+
+int Fixed::operator>=(const Fixed &primary) const
+{
+	return (this->fpn >= primary.fpn);
+}
+
+int Fixed::operator<=(const Fixed &primary) const
+{
+	return (this->fpn <= primary.fpn);
+}
+
+int Fixed::operator==(const Fixed &primary) const
+{
+	return (this->fpn == primary.fpn);
+}
+
+int Fixed::operator!=(const Fixed &primary) const
+{
+	return (this->fpn != primary.fpn);
+}
+
+
+//////////////// overloaded operators ////////////////
+
 
 Fixed::Fixed()
 {
@@ -105,6 +146,8 @@ std::ostream &operator<<(std::ostream &output_console, const Fixed &fp)
 	output_console << fp.toFloat();
 	return (output_console);
 }
+
+
 
 
 int main()
