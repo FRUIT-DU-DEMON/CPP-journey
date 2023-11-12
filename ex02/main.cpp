@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 02:41:10 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/12 21:33:14 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/12 23:37:49 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -47,8 +47,10 @@ class Fixed {
 		float operator-(const Fixed &primary) const;
 		float operator*(const Fixed &primary) const;
 		float operator/(const Fixed &primary) const;
-		// void operator++();
-		// void operator--();
+		int operator++();
+		int operator--();
+		int operator++(int);
+		int operator--(int);
 		~Fixed();
 };
 //////////////// overloaded operators ////////////////
@@ -102,15 +104,26 @@ float Fixed::operator/(const Fixed &primary) const
 	return (this->toFloat() / primary.toFloat());
 }
 
-// void Fixed::operator++()
-// {
-// 	this->fpn++;
-// }
+int Fixed::operator++()
+{
+	return (this->fpn++);
+}
 
-// void Fixed::operator--()
-// {
-// 	this->fpn--;
-// }
+int Fixed::operator--()
+{
+	return (this->fpn--);
+}
+
+int Fixed::operator++()
+{
+	return (++this->fpn);
+}
+
+int Fixed::operator--()
+{
+	return (--this->fpn);
+}
+
 
 //////////////// overloaded operators ////////////////
 
