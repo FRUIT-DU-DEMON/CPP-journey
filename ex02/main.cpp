@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 02:41:10 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/13 04:54:41 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/13 05:26:25 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -51,10 +51,48 @@ class Fixed {
 		Fixed operator--();//post-decrement
 		Fixed operator++(int);//pre-increment
 		Fixed operator--(int);//pre-decrement
+		// min max overloaded functions
+		static Fixed &min(Fixed &obj1, Fixed &obj2);
+		static Fixed &max(Fixed &obj1, Fixed &obj2);
+		static const Fixed &min(const Fixed &obj1, const Fixed &obj2);
+		static const Fixed &max(const Fixed &obj1, const Fixed &obj2);
 		~Fixed();
 };
 
-//////////////// overloaded operators ////////////////
+//////////////// overloaded functions ////////////////
+Fixed &Fixed::min(Fixed &obj1, Fixed &obj2)
+{
+	if (obj1.fpn <= obj2.fpn)
+		return (obj1);
+	else
+		return (obj2);
+}
+
+Fixed &Fixed::max(Fixed &obj1, Fixed &obj2)
+{
+	if (obj1.fpn >= obj2.fpn)
+		return (obj1);
+	else
+		return (obj2);
+}
+
+const Fixed &Fixed::min(const Fixed &obj1, const Fixed &obj2)
+{
+	if (obj1.fpn <= obj2.fpn)
+		return (obj1);
+	else
+		return (obj2);
+}
+
+const Fixed &Fixed::max(const Fixed &obj1, const Fixed &obj2)
+{
+	if (obj1.fpn >= obj2.fpn)
+		return (obj1);
+	else
+		return (obj2);
+}
+//////////////// overloaded functions ////////////////
+
 //////////////// overloaded operators ////////////////
 int Fixed::operator>(const Fixed &primary) const
 {
@@ -136,8 +174,6 @@ Fixed Fixed::operator--()
 	return (*this);//a=2, b=0, b=a--, b=1 and a=1
 }
 
-
-//////////////// overloaded operators ////////////////
 //////////////// overloaded operators ////////////////
 
 
@@ -214,10 +250,13 @@ std::ostream &operator<<(std::ostream &output_console, const Fixed &fp)
 int main()
 {
 	Fixed a;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 	std::cout << a << std::endl;
 	std::cout << ++a << std::endl;
 	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
+	std::cout << --a << std::endl;
 	std::cout << a << std::endl;
-	
+	std::cout << b << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
+	return 0;
 }
