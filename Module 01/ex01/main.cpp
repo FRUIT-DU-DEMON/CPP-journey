@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 01:53:54 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/24 16:42:52 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/02 03:07:44 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -21,7 +21,7 @@ int main()
 		Zombie *zombiizz = zombieHorde(N, name);
 		for (int i = 0; i < N; i++)
 			zombiizz[i].announce();
-		delete[] zombiizz;
+		delete[] zombiizz; //or free inside the destructor!!
 	}
 	return (0);
 }
