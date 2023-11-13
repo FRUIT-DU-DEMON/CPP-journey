@@ -6,19 +6,19 @@
 #    By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 02:40:15 by hlabouit          #+#    #+#              #
-#    Updated: 2023/11/12 03:15:27 by hlabouit         ###   ########.fr        #
+#    Updated: 2023/11/13 05:39:56 by hlabouit         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME = main
-CPPFILES = main.cpp
+NAME = fpn
+CPPFILES = main.cpp Fixed.cpp
 CPPOFILES = $(CPPFILES:%.cpp=%.o)
 CPPC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 #-w -w -w -g c++98
 
 all: $(NAME)
 
-$(NAME) : $(CPPOFILES)
+$(NAME) : $(CPPOFILES) Fixed.hpp
 	@$(CPPC) $(CPPOFILES) -o $(NAME)
 
 %.o : %.cpp
