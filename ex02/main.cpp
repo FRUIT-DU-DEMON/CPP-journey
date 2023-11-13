@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 02:41:10 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/12 23:37:49 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/13 04:54:41 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -47,12 +47,14 @@ class Fixed {
 		float operator-(const Fixed &primary) const;
 		float operator*(const Fixed &primary) const;
 		float operator/(const Fixed &primary) const;
-		int operator++();
-		int operator--();
-		int operator++(int);
-		int operator--(int);
+		Fixed operator++();//post-increment
+		Fixed operator--();//post-decrement
+		Fixed operator++(int);//pre-increment
+		Fixed operator--(int);//pre-decrement
 		~Fixed();
 };
+
+//////////////// overloaded operators ////////////////
 //////////////// overloaded operators ////////////////
 int Fixed::operator>(const Fixed &primary) const
 {
@@ -104,27 +106,38 @@ float Fixed::operator/(const Fixed &primary) const
 	return (this->toFloat() / primary.toFloat());
 }
 
-int Fixed::operator++()
+Fixed Fixed::operator++(int)
 {
-	return (this->fpn++);
+	//post-increment
+	Fixed old_state = *this;
+	this->fpn++;
+	return (old_state);//a=2, b=0, b=a++, b=2 and a=3
 }
 
-int Fixed::operator--()
+Fixed Fixed::operator--(int)
 {
-	return (this->fpn--);
+	//post-decrement
+	Fixed old_state = *this;
+	this->fpn--;
+	return (old_state);//a=2, b=0, b=a--, b=2 and a=1
 }
 
-int Fixed::operator++()
+Fixed Fixed::operator++()
 {
-	return (++this->fpn);
+	//pre-increment
+	this->fpn++;
+	return (*this);//a=2, b=0, b=a++, b=3 and a=3
 }
 
-int Fixed::operator--()
+Fixed Fixed::operator--()
 {
-	return (--this->fpn);
+	//pre-decrement
+	this->fpn--;
+	return (*this);//a=2, b=0, b=a--, b=1 and a=1
 }
 
 
+//////////////// overloaded operators ////////////////
 //////////////// overloaded operators ////////////////
 
 
@@ -200,15 +213,11 @@ std::ostream &operator<<(std::ostream &output_console, const Fixed &fp)
 
 int main()
 {
-	// float i = 42.42f;
-	// i++;
-	// std::cout<< i << std::endl;
-	// i = 42.42f;
-	// ++i;
 	Fixed a;
-	a.setRawBits(1);
-	std::cout<< a<< std::endl;
-	// int fpfn = a.getRawBits();
-	// std::cout<< fpfn << std::endl;
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
 	
 }
