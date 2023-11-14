@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 23:00:16 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/14 05:31:26 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/14 23:53:30 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -26,9 +26,9 @@
 class ClapTrap {
 	private :
 		std::string name;
-		int hit_points;
-		int energy_points;
-		int attack_damage;
+		unsigned hit_points;
+		unsigned energy_points;
+		unsigned attack_damage;
 	public :
 		ClapTrap();
 		ClapTrap(const ClapTrap &primary);
@@ -83,14 +83,11 @@ void ClapTrap::attack(const std::string &target)
 	{
 		std::cout << "ClapTrap " << this->name << " attacks " << target << " causing "
 			<< this->attack_damage << " points of damage!" << std::endl;
-		if ((this->energy_points - 1) <= 0)
-			this->energy_points = 0;
-		else
-        	this->energy_points--;
+        this->energy_points--;
 	}
 	else
-		std::cout << "ClapTrap " << this->name << " can't attack due to low hit points or energy!"
-			<< std::endl;
+		std::cout << "ClapTrap " << this->name <<
+			" can't attack due to low hit points or energy otherwise he needs Cola!" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
@@ -99,14 +96,15 @@ void ClapTrap::takeDamage(unsigned int amount)
 	{
 		std::cout << "ClapTrap " << this->name << " takes " << amount
 			<< " points of damage!" << std::endl;
-		if ((this->hit_points - amount) <= 0)
+		if ((this->hit_points <= amount))
 			this->hit_points = 0;
 		else
 			this->hit_points -= amount;
 	}
 	else
 		std::cout << "ClapTrap " << this->name
-			<< " is already down can't take more damage due to low hit points or energy!" << std::endl;
+			<< " is already down can't take more damage due to low hit points or energy otherwise he needs Cola!"
+				<< std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -116,14 +114,12 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << this->name << " is being repaired gaining "
 			<< amount << " hit points!" << std::endl;
 		this->hit_points += amount;
-		if ((this->energy_points - 1) <= 0)
-			this->energy_points = 0;
-		else
-			this->energy_points--;
+		this->energy_points--;
 	}
 	else
 		std::cout << "ClapTrap " << this->name <<
-			" can't be repaired it's already down due to low hit points or energy!" << std::endl;
+			" can't be repaired it's already down due to low hit points or energy otherwise he needs Cola!"
+				<< std::endl;
 }
 
 ClapTrap::~ClapTrap()
@@ -134,6 +130,9 @@ ClapTrap::~ClapTrap()
 
 int main()
 {
-	unsigned int i = 0;
-	std::cout<< --i << std::endl;
+	ClapTrap Cyborg("Franky");
+	Cyborg.takeDamage(9);
+	Cyborg.beRepaired(85);
+	Cyborg.takeDamage(100);
+	Cyborg.takeDamage(1);
 }
