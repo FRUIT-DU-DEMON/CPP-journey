@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 23:00:16 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/14 02:46:12 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/14 04:56:57 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -42,7 +42,7 @@ class ClapTrap {
 
 ClapTrap::ClapTrap()
 {
-	std::cout<< "Default constructor invoked" << std::endl;
+	std::cout<< "Default constructor called" << std::endl;
 	this->name = "unknown";
 	this->hit_points = 10;
 	this->energy_points = 10;
@@ -51,13 +51,13 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(const ClapTrap &primary)
 {
-	std::cout<< "Copy constructor invoked" << std::endl;
+	std::cout<< "Copy constructor called" << std::endl;
 	*this = primary;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &primary)
 {
-	std::cout<< "Copy assignment operator invoked" << std::endl;
+	std::cout<< "Copy assignment operator called" << std::endl;
 	if (this != &primary)
 	{
 		this->name = primary.name;
@@ -70,13 +70,37 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &primary)
 
 ClapTrap::ClapTrap(const std::string &which_name)
 {
-	
+	std::cout<< "ClapTrap " << which_name << " is born" << std::endl;
+	this->name = which_name;
+	this->hit_points = 10;
+	this->energy_points = 10;
+	this->attack_damage = 0;
+}
+
+void ClapTrap::attack(const std::string &target)
+{
+	if (this->hit_points > 0 && this->energy_points > 0)
+	{
+		std::cout << "ClapTrap " << this->name << " attacks " << target << " causing "
+			<< this->attack_damage << " points of damage!" << std::endl;
+        this->energy_points--;
+	}
+	else
+		std::cout << "ClapTrap " << this->name << " can't attack due to low hit points or energy!"
+			<< std::endl;
 }
 
 
 
 
 
+
+
+
+ClapTrap::~ClapTrap()
+{
+	std::cout<< "Destructor invoked" << std::endl;
+}
 
 
 int main()
