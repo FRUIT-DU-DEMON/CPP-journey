@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 23:00:16 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/14 05:16:37 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/14 05:31:26 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -83,7 +83,10 @@ void ClapTrap::attack(const std::string &target)
 	{
 		std::cout << "ClapTrap " << this->name << " attacks " << target << " causing "
 			<< this->attack_damage << " points of damage!" << std::endl;
-        this->energy_points--;
+		if ((this->energy_points - 1) <= 0)
+			this->energy_points = 0;
+		else
+        	this->energy_points--;
 	}
 	else
 		std::cout << "ClapTrap " << this->name << " can't attack due to low hit points or energy!"
@@ -96,14 +99,14 @@ void ClapTrap::takeDamage(unsigned int amount)
 	{
 		std::cout << "ClapTrap " << this->name << " takes " << amount
 			<< " points of damage!" << std::endl;
-		if (amount >= this->hit_points)
+		if ((this->hit_points - amount) <= 0)
 			this->hit_points = 0;
 		else
 			this->hit_points -= amount;
 	}
 	else
-		std::cout << "ClapTrap " << this->name << " is already down can't take more damage!"
-			<< std::endl;
+		std::cout << "ClapTrap " << this->name
+			<< " is already down can't take more damage due to low hit points or energy!" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -113,17 +116,15 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << this->name << " is being repaired gaining "
 			<< amount << " hit points!" << std::endl;
 		this->hit_points += amount;
-		this->energy_points--;
+		if ((this->energy_points - 1) <= 0)
+			this->energy_points = 0;
+		else
+			this->energy_points--;
 	}
 	else
-		std::cout << "ClapTrap " << this->name << " can't be repaired it's already down!"
-			<< std::endl;
+		std::cout << "ClapTrap " << this->name <<
+			" can't be repaired it's already down due to low hit points or energy!" << std::endl;
 }
-
-
-
-
-
 
 ClapTrap::~ClapTrap()
 {
@@ -133,5 +134,6 @@ ClapTrap::~ClapTrap()
 
 int main()
 {
-	
+	unsigned int i = 0;
+	std::cout<< --i << std::endl;
 }
