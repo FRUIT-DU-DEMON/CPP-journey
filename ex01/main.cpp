@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 02:03:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/15 04:52:46 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/15 21:22:07 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -23,7 +23,7 @@
 #include<cmath>
 
 class ClapTrap {
-	private :
+	protected :
 		std::string name;
 		unsigned hit_points;
 		unsigned energy_points;
@@ -39,23 +39,44 @@ class ClapTrap {
 		~ClapTrap();
 };
 
+////////////////////////////////// ScavTrap CPP //////////////////////////////////
 class ScavTrap : public ClapTrap 
 {
     public :
         ScavTrap();
         ScavTrap(const ScavTrap &primary);
-        ScavTrap &operator=(const ScavTrap &primary);
-        ~ScavTrap();
-        void guardGate();
-        
-        
+        // ScavTrap &operator=(const ScavTrap &primary);
+        // ScavTrap(const std::string &which_name);
+		// void attack(const std::string &target);
+        // void guardGate();
+        // ~ScavTrap();
 };
 
+ScavTrap::ScavTrap() //: ClapTrap()
+{
+	std::cout<< "Derived class default constructor called" << std::endl;
+	this->name = "unknown";
+	this->hit_points = 100;
+	this->energy_points = 50;
+	this->attack_damage = 20;
+}
 
-////////////////////////////////// ClapTrap //////////////////////////////////
+ScavTrap::ScavTrap(const ScavTrap &primary) //: ClapTrap(primary)
+{
+	std::cout<< "Derived class copy constructor called" << std::endl;
+	*this = primary;   
+}
+
+
+
+
+
+////////////////////////////////// ScavTrap CPP //////////////////////////////////
+
+////////////////////////////////// ClapTrap CPP //////////////////////////////////
 ClapTrap::ClapTrap()
 {
-	std::cout<< "Default constructor called" << std::endl;
+	std::cout<< "Base class default constructor called" << std::endl;
 	this->name = "unknown";
 	this->hit_points = 10;
 	this->energy_points = 10;
@@ -64,13 +85,13 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(const ClapTrap &primary)
 {
-	std::cout<< "Copy constructor called" << std::endl;
+	std::cout<< "Base class copy constructor called" << std::endl;
 	*this = primary;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &primary)
 {
-	std::cout<< "Copy assignment operator called" << std::endl;
+	std::cout<< "Base class copy assignment operator called" << std::endl;
 	if (this != &primary)
 	{
 		this->name = primary.name;
@@ -137,12 +158,13 @@ void ClapTrap::beRepaired(unsigned int amount)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout<< "Destructor invoked" << std::endl;
+	std::cout<< "Base class destructor invoked" << std::endl;
 }
-////////////////////////////////// ClapTrap //////////////////////////////////
+////////////////////////////////// ClapTrap CPP //////////////////////////////////
 
 
 int main()
 {
-    
+    ScavTrap obj;
+    obj.attack("chiwahd");
 }
