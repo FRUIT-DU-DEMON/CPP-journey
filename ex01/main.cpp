@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 02:03:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/15 22:37:15 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/15 23:54:20 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -45,9 +45,9 @@ class ScavTrap : public ClapTrap
     public :
         ScavTrap();
         ScavTrap(const ScavTrap &primary);
-        // ScavTrap &operator=(const ScavTrap &primary);
-        // ScavTrap(const std::string &which_name);
-		// void attack(const std::string &target);
+        ScavTrap &operator=(const ScavTrap &primary);
+        ScavTrap(const std::string &which_name);
+		void attack(const std::string &target);
         // void guardGate();
         ~ScavTrap();
 };
@@ -72,6 +72,28 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &primary)
     if (this != &primary)
         ClapTrap::operator=(primary);
     return (*this);
+}
+
+ScavTrap::ScavTrap(const std::string &which_name) : ClapTrap(which_name)
+{
+	std::cout<< "ScavTrap robot " << which_name << " is born" << std::endl;
+	this->name = which_name;
+	this->hit_points = 100;
+	this->energy_points = 50;
+	this->attack_damage = 20;
+}
+
+void ScavTrap::attack(const std::string &target)
+{
+	if (this->hit_points > 0 && this->energy_points > 0)
+	{
+		std::cout << "ScavTrap robot " << this->name << " attacks " << target << " causing "
+			<< this->attack_damage << " points of damage!" << std::endl;
+        this->energy_points--;
+	}
+	else
+		std::cout << "ScavTrap robot " << this->name <<
+			" can't attack due to low hit points or energy otherwise he needs Cola!" << std::endl;
 }
 
 
@@ -174,6 +196,57 @@ ClapTrap::~ClapTrap()
 
 int main()
 {
-    ScavTrap obj;
-    obj.attack("chiwahd");
+    ScavTrap obj("CYBORG");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+    obj.attack("targeet");
+
+
 }
