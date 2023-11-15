@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 02:03:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/15 21:24:44 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/15 22:37:15 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -49,7 +49,7 @@ class ScavTrap : public ClapTrap
         // ScavTrap(const std::string &which_name);
 		// void attack(const std::string &target);
         // void guardGate();
-        // ~ScavTrap();
+        ~ScavTrap();
 };
 
 ScavTrap::ScavTrap() : ClapTrap()
@@ -64,12 +64,21 @@ ScavTrap::ScavTrap() : ClapTrap()
 ScavTrap::ScavTrap(const ScavTrap &primary) : ClapTrap(primary)
 {
 	std::cout<< "Derived class copy constructor called" << std::endl;
-	*this = primary;   
+}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap &primary)
+{
+	std::cout<< "Derived class copy assignment operator called" << std::endl;
+    if (this != &primary)
+        ClapTrap::operator=(primary);
+    return (*this);
 }
 
 
-
-
+ScavTrap::~ScavTrap()
+{
+    std::cout<< "Derived class destructor invoked" << std::endl;
+}
 
 ////////////////////////////////// ScavTrap CPP //////////////////////////////////
 
