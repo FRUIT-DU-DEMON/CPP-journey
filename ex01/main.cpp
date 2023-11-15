@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 02:03:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/15 21:22:07 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/15 21:24:44 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -52,7 +52,7 @@ class ScavTrap : public ClapTrap
         // ~ScavTrap();
 };
 
-ScavTrap::ScavTrap() //: ClapTrap()
+ScavTrap::ScavTrap() : ClapTrap()
 {
 	std::cout<< "Derived class default constructor called" << std::endl;
 	this->name = "unknown";
@@ -61,7 +61,7 @@ ScavTrap::ScavTrap() //: ClapTrap()
 	this->attack_damage = 20;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &primary) //: ClapTrap(primary)
+ScavTrap::ScavTrap(const ScavTrap &primary) : ClapTrap(primary)
 {
 	std::cout<< "Derived class copy constructor called" << std::endl;
 	*this = primary;   
