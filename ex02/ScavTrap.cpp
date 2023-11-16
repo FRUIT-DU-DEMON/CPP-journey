@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 03:33:57 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/16 03:34:11 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/16 04:17:45 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,7 +14,7 @@
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
-	std::cout<< "Derived class default constructor called" << std::endl;
+	std::cout<< "Derived class ScavTrap default constructor called" << std::endl;
 	this->name = "unknown";
 	this->hit_points = 100;
 	this->energy_points = 50;
@@ -23,12 +23,12 @@ ScavTrap::ScavTrap() : ClapTrap()
 
 ScavTrap::ScavTrap(const ScavTrap &primary) : ClapTrap(primary)
 {
-	std::cout<< "Derived class copy constructor called" << std::endl;
+	std::cout<< "Derived class ScavTrap copy constructor called" << std::endl;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &primary)
 {
-	std::cout<< "Derived class copy assignment operator called" << std::endl;
+	std::cout<< "Derived class ScavTrap copy assignment operator called" << std::endl;
     if (this != &primary)
         ClapTrap::operator=(primary);
     return (*this);
@@ -64,5 +64,5 @@ void ScavTrap::guardGate()
 
 ScavTrap::~ScavTrap()
 {
-    std::cout<< "Derived class destructor invoked" << std::endl;
+    std::cout<< "Derived class ScavTrap destructor invoked" << std::endl;
 }
