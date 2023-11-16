@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 01:45:09 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/16 06:08:33 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/16 21:48:56 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,7 +14,7 @@
 
 int main()
 {
-    FragTrap Cyborg("Franky");
+    FragTrap Cyborg("Franky");//a subobject of ClapTrap created
 	// Cyborg.attack("CP9");
 	// ClapTrap Pacifista(Cyborg);
 	// Pacifista.attack("Kizaru");
