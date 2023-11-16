@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 02:03:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/15 23:54:20 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/16 00:07:32 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -48,7 +48,7 @@ class ScavTrap : public ClapTrap
         ScavTrap &operator=(const ScavTrap &primary);
         ScavTrap(const std::string &which_name);
 		void attack(const std::string &target);
-        // void guardGate();
+        void guardGate();
         ~ScavTrap();
 };
 
@@ -96,6 +96,11 @@ void ScavTrap::attack(const std::string &target)
 			" can't attack due to low hit points or energy otherwise he needs Cola!" << std::endl;
 }
 
+void ScavTrap::guardGate()
+{
+	//low hit points or energy protection !!
+	std::cout << "ScavTrap robot " << this->name << " is now in Gatekeeper mode!" << std::endl;
+}
 
 ScavTrap::~ScavTrap()
 {
@@ -196,57 +201,9 @@ ClapTrap::~ClapTrap()
 
 int main()
 {
-    ScavTrap obj("CYBORG");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-    obj.attack("targeet");
-
+	ClapTrap Pacifista("Shibokai kuma");
+    ScavTrap Cyborg("Franky");
+	Cyborg.attack("CP-9");
+	Cyborg.guardGate();
 
 }
