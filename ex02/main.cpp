@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 01:45:09 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/16 04:40:10 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/16 05:42:44 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -69,5 +69,10 @@ FragTrap::~FragTrap()
 
 int main()
 {
-	
+    FragTrap Cyborg("Franky");
+	// Cyborg.attack("CP9");
+	// ClapTrap Pacifista(Cyborg);
+	// Pacifista.attack("Kizaru");
+	// Pacifista.attack("Ivankov");
+	Cyborg.highFivesGuys();
 }

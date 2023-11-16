@@ -6,19 +6,19 @@
 #    By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 01:45:31 by hlabouit          #+#    #+#              #
-#    Updated: 2023/11/16 01:45:59 by hlabouit         ###   ########.fr        #
+#    Updated: 2023/11/16 04:52:15 by hlabouit         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME = main
-CPPFILES = main.cpp 
+NAME = fragtrap
+CPPFILES = main.cpp ClapTrap.cpp ScavTrap.cpp
 CPPOFILES = $(CPPFILES:%.cpp=%.o)
 CPPC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 #-w -w -w -g c++98
 
 all: $(NAME)
 
-$(NAME) : $(CPPOFILES) #ScavTrap.hpp ClapTrap.hpp
+$(NAME) : $(CPPOFILES) #ScavTrap.hpp ClapTrap.hpp FragTrap.hpp
 	@$(CPPC) $(CPPOFILES) -o $(NAME)
 
 %.o : %.cpp
