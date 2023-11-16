@@ -1,17 +1,17 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 03:33:18 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/16 05:53:00 by hlabouit         ###   ########.fr       */
+/*   Created: 2023/11/16 05:44:31 by hlabouit          #+#    #+#             */
+/*   Updated: 2023/11/16 05:53:32 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef CLAPTRAP_H
-# define CLAPTRAP_H
+#ifndef FRAGTRAP_H
+# define FRAGTRAP_H
 
 #include<fstream>
 #include<iostream>
@@ -21,21 +21,17 @@
 #include<cstdlib>
 #include<cmath>
 
-class ClapTrap {
-	protected :
-		std::string name;
-		unsigned hit_points;
-		unsigned energy_points;
-		unsigned attack_damage;
+#include"ScavTrap.hpp"
+
+class FragTrap : public ClapTrap
+{
 	public :
-		ClapTrap();
-		ClapTrap(const ClapTrap &primary);
-		ClapTrap &operator=(const ClapTrap &primary);
-		ClapTrap(const std::string &which_name);
-		void attack(const std::string &target);
-		void takeDamage(unsigned int amount); 
-		void beRepaired(unsigned int amount);
-		~ClapTrap();
+		FragTrap();
+		FragTrap(const FragTrap &primary);
+		FragTrap &operator=(const FragTrap &primary);
+		FragTrap(const std::string &which_name);
+		void highFivesGuys(void);
+		~FragTrap();
 };
 
 #endif
