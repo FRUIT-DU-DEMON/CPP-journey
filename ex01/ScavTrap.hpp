@@ -1,22 +1,30 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 02:03:23 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/16 01:39:42 by hlabouit         ###   ########.fr       */
+/*   Created: 2023/11/16 01:28:49 by hlabouit          #+#    #+#             */
+/*   Updated: 2023/11/16 01:30:15 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
-#include"ScavTrap.hpp"
+#ifndef SCAVTRAP_H
+# define SCAVTRAP_H
 
-int main()
+#include"ClapTrap.hpp"
+
+class ScavTrap : public ClapTrap 
 {
-	// ClapTrap Pacifista("Shibokai kuma");
-    ScavTrap Cyborg("Franky");
-	Cyborg.attack("CP9");
-	// Pacifista.attack("Kizaru");
-	Cyborg.guardGate();
-}
+    public :
+        ScavTrap();
+        ScavTrap(const ScavTrap &primary);
+        ScavTrap &operator=(const ScavTrap &primary);
+        ScavTrap(const std::string &which_name);
+		void attack(const std::string &target);
+        void guardGate();
+        ~ScavTrap();
+};
+
+#endif
