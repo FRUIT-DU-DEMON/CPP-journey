@@ -1,34 +1,28 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 20:46:37 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/18 04:10:26 by hlabouit         ###   ########.fr       */
+/*   Created: 2023/11/18 03:38:31 by hlabouit          #+#    #+#             */
+/*   Updated: 2023/11/18 03:42:58 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
+#ifndef DOG_H
+# define DOG_H
+
 #include"Animal.hpp"
-#include"Dog.hpp"
-#include"Cat.hpp"
 
-int main()
+class Dog : public Animal
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
+	public :
+		Dog();
+		Dog(const Dog &primary);
+		Dog &operator=(const Dog &primary);
+		void makeSound() const;
+		~Dog();
+};
 
-	//deleting objects of a polymorphic class type(a class with virtual functions)
-	delete meta;
-	delete j;
-	delete i;
-	return 0;
-}
+#endif
