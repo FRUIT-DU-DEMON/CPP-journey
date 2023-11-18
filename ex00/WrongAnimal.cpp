@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 15:13:41 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/18 15:42:15 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:26:11 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -40,7 +40,7 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal &primary)
 
 void WrongAnimal::makeSound() const
 {
-	std::cout<< this->type << " is making the wrong sound!" << std::endl;
+	std::cout<< this->type << " is making ASWAT!" << std::endl;
 }
 
 const std::string &WrongAnimal::getType() const

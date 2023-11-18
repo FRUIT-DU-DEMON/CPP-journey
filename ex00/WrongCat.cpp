@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 15:49:32 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/18 15:55:14 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:26:38 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -34,7 +34,7 @@ WrongCat &WrongCat::operator=(const WrongCat &primary)
 
 void WrongCat::makeSound() const
 {
-	std::cout<< this->type << " is making ASWAT" << std::endl;
+	std::cout<< this->type << " is making the wrong sound!" << std::endl;
 }
 
 WrongCat::~WrongCat()
