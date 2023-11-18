@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:46:37 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/18 15:12:17 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:10:01 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,9 +14,11 @@
 #include"Dog.hpp"
 #include"Cat.hpp"
 #include"WrongAnimal.hpp"
+#include"WrongCat.hpp"
 
 int main()
 {
+	////////// objects with a virtual makeSound() //////////
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -31,5 +33,18 @@ int main()
 	delete meta;
 	delete j;
 	delete i;
-	return 0;
+	////////// objects with a virtual makeSound() //////////
+	
+	////////// objects without a virtual makeSound() //////////
+	const WrongAnimal* W_meta = new WrongAnimal();
+	const WrongAnimal* W_i = new WrongCat();
+	
+	std::cout << W_i->getType() << " " << std::endl;
+	W_i->makeSound();
+	W_meta->makeSound();
+	
+	delete W_meta;
+	delete W_i;
+	////////// objects without a virtual makeSound() //////////
+	return (0);
 }
