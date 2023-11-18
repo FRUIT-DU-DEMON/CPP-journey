@@ -6,11 +6,11 @@
 #    By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 20:44:47 by hlabouit          #+#    #+#              #
-#    Updated: 2023/11/18 01:19:33 by hlabouit         ###   ########.fr        #
+#    Updated: 2023/11/18 03:13:26 by hlabouit         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME = Polymorphism
+NAME = polymorphism
 CPPFILES = main.cpp Animal.cpp
 CPPOFILES = $(CPPFILES:%.cpp=%.o)
 CPPC = c++

@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 00:55:01 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/18 01:20:24 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/18 03:19:03 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -50,5 +50,5 @@ const std::string &Animal::getType() const
 
 Animal::~Animal()
 {
-	std::cout<< "Base class Animal destructor invoked" << std::endl;
+	std::cout<< "Base class Animal destructor called" << std::endl;
 }
