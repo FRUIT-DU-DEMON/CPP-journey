@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:40:12 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/18 15:04:44 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:36:36 by hlabouit         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include"Dog.hpp"
 
@@ -16,6 +16,7 @@ Dog::Dog() : Animal()
 {
 	std::cout<< "Derived class Dog default constructor called" << std::endl;
 	this->type = "Dog";
+	this->idea = new Brain();
 }
 
 Dog::Dog(const Dog &primary) : Animal(primary)
@@ -39,4 +40,5 @@ void Dog::makeSound() const
 Dog::~Dog()
 {
 	std::cout<< "Derived class Dog destructor called" << std::endl;
+	delete this->idea;
 }
