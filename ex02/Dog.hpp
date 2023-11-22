@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 03:38:31 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/22 19:16:22 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:30:15 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 # define DOG_H
 
 #include"Animal.hpp"
+#include"Brain.hpp"
 
 class Dog : public Animal
 {
+	private :
+		Brain *idea;
 	public :
 		Dog();
 		Dog(const Dog &primary);
