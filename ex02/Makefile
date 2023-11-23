@@ -6,11 +6,11 @@
 #    By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 20:44:47 by hlabouit          #+#    #+#              #
-#    Updated: 2023/11/22 19:31:54 by hlabouit         ###   ########.fr        #
+#    Updated: 2023/11/23 17:06:28 by hlabouit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = brain
+NAME = abstract
 CPPFILES = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 CPPOFILES = $(CPPFILES:%.cpp=%.o)
 CPPC = c++
