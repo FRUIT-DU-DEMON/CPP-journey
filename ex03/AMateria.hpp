@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 20:44:51 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/23 21:04:29 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/23 21:57:39 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include<ctype.h>
 #include<cstdlib>
 #include<cmath>
+
+class ICharacter;
 
 class AMateria {
     protected:
