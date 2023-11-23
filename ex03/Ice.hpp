@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 20:46:50 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/23 21:59:06 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/23 23:53:32 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ICE_H
 
 #include"AMateria.hpp"
+#include"ICharacter.hpp"
+
 
 class Ice : public AMateria
 {

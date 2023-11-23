@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 20:56:21 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/23 22:08:09 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/23 23:53:44 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Cure *Cure::clone() const
 
 void Cure::use(ICharacter& target)
 {
-    std::cout<< "* heals " << this->name<< " 's wounds *" << std::endl;//not this
+    std::cout<< "* heals " << target.getName() << " 's wounds *" << std::endl;//not this
 }
 
 Cure::~Cure()
