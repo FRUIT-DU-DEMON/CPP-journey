@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 17:55:30 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/23 16:36:57 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:46:14 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,36 +17,33 @@
 #include"WrongCat.hpp"
 #include"Brain.hpp"
 
-void fun()
-{
-    system("leaks brain");
-}
+// void fun()
+// {
+//     system("leaks brain");
+// }
 
 
 int main()
 {
-    atexit(fun);
-    /////// basic test of deep copy /////////
+    // atexit(fun);
+    
     const Animal* j = new Dog();
     const Animal* i = new Cat();
     
     delete j;
     delete i;
-    /////// basic test of deep copy /////////
     
-    Animal *arr[10];
+    Animal *arr[6];
     
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 6; i++)
     {
-        if (i > 4)
+        if (i > 2)
             arr[i] = new Cat();
         else
             arr[i] = new Dog();
     }
-    
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 6; i++)
         delete arr[i];
-    
-    
+
     return 0;
 }
