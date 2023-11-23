@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 00:55:11 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/22 19:04:10 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:16:21 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include<cstdlib>
 #include<cmath>
 
-//polymorphic class
+//Abstract class
 class Animal {
 	protected :
 		std::string type;
@@ -29,7 +29,7 @@ class Animal {
 		Animal();
 		Animal(const Animal &primary);
 		Animal &operator=(const Animal &primary);
-		virtual void makeSound() const;//virtual keyword used for a polymorphic Behavior enabling derived classes to override the function
+		virtual void makeSound() const = 0;// pure virtual fuction which makes this Class Abstract
 		const std::string &getType() const;
 		virtual ~Animal();
 };
