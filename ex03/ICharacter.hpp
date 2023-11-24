@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 22:09:42 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/23 22:11:15 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/24 13:48:57 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ICHARACTER_H
 
 #include"AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {

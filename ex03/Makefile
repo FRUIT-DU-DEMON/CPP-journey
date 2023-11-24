@@ -6,11 +6,11 @@
 #    By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 20:44:14 by hlabouit          #+#    #+#              #
-#    Updated: 2023/11/23 23:54:23 by hlabouit         ###   ########.fr        #
+#    Updated: 2023/11/24 16:32:17 by hlabouit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = interafce
+NAME = interaface
 CPPFILES = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 CPPOFILES = $(CPPFILES:%.cpp=%.o)
 CPPC = c++

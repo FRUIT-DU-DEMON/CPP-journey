@@ -1,45 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.cpp                                           :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 20:56:21 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/24 13:51:10 by hlabouit         ###   ########.fr       */
+/*   Created: 2023/11/24 13:39:51 by hlabouit          #+#    #+#             */
+/*   Updated: 2023/11/24 13:47:47 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"Cure.hpp"
+#include"AMateria.hpp"
 
-Cure::Cure()
+AMateria::AMateria()
 {
-    this->name = "cure";
+    this->name = "unknown";
 }
 
-Cure::Cure(const Cure &primary) : AMateria(primary)
+AMateria::AMateria(const AMateria &primary)
 {
     *this = primary;
 }
 
-Cure &Cure::operator=(const Cure &primary)
+AMateria &AMateria::operator=(const AMateria &primary)
 {
     if (this != &primary)
-        AMateria::operator=(primary);
+        this->name = primary.name;
     return (*this);
 }
 
-Cure *Cure::clone() const
+AMateria::AMateria(std::string const & type)
 {
-    return (new Cure());
+    this->name = type;
 }
 
-void Cure::use(ICharacter& target)
+std::string const &AMateria::getType() const
 {
-    std::cout<< "* heals " << target.getName() << " 's wounds *" << std::endl;
+    return (this->name);
 }
 
-Cure::~Cure()
+void AMateria::use(ICharacter& target)
 {
-    
+    std::cout<< "use of AMateria called with " << target.getName() << std::endl;
+}
+
+
+AMateria::~AMateria()
+{
+
 }

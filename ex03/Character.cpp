@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 22:19:58 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/23 23:27:36 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:02:40 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ Character &Character::operator=(const Character &primary)
         {
             if (this->inventory[i])
                 delete this->inventory[i];
-            this->inventory[i] = primary.inventory[i]->clone();
+            if (primary.inventory[i])
+                this->inventory[i] = primary.inventory[i]->clone();
         }
     }
     return (*this);
@@ -57,7 +58,7 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
-    if (idx > 0 && idx < 4)
+    if (idx >= 0 && idx < 4)
     {
         this->inventory[idx] = NULL;
     }
@@ -70,7 +71,7 @@ std::string const &Character::getName() const
 
 void Character::use(int idx, ICharacter& target)
 {
-    if (idx > 0 && idx < 4 && this->inventory[idx])
+    if (idx >= 0 && idx < 4 && this->inventory[idx])
     {
         this->inventory[idx]->use(target);
     }

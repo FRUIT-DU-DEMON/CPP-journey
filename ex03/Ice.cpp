@@ -6,7 +6,7 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 21:05:18 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/23 23:53:58 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/24 13:51:07 by hlabouit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Ice *Ice::clone() const
 
 void Ice::use(ICharacter& target)
 {
-    std::cout<< "* shoots an ice bolt at " << target.getName() << " *" << std::endl;//not this
+    std::cout<< "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
 
 Ice::~Ice()
