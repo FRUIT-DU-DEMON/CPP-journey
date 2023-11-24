@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 00:55:01 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/11/18 15:01:54 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/22 19:03:38 by hlabouit         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include"Animal.hpp"
 
@@ -31,12 +31,6 @@ Animal &Animal::operator=(const Animal &primary)
 		this->type = primary.type;
 	return (*this);
 }
-
-// Animal::Animal(const std::string &which_type)
-// {
-// 	std::cout<< "Animal " << which_type << " is born" << std::endl;
-// 	this->type = which_type;
-// }
 
 void Animal::makeSound() const
 {

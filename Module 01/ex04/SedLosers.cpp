@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   SedLosers.cpp                                      :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: hlabouit <hlabouit@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:08:24 by hlabouit          #+#    #+#             */
-/*   Updated: 2023/10/30 12:09:00 by hlabouit         ###   ########.fr       */
+/*   Updated: 2023/11/19 13:41:53 by hlabouit         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include"SedLosers.hpp"
 
@@ -48,7 +48,8 @@ void SedLosers::run()
 	while(std::getline(input, line))
 	{
 		position = line.find(this->s1);
-		while (position != std::string::npos)
+		while (position != std::string::npos)//npos is a static member constant of the std::string class
+		//It represents the maximum value for the size_t data type
 		{
 			buffer1 = line.substr(0, position);
 			buffer2 = line.substr(position + this->s1.length(), line.length());
@@ -56,7 +57,10 @@ void SedLosers::run()
 			position = line.find(this->s1);
 			flag = 777;
 		}
-		output<< line;
+		if (input.eof())
+			output<< line;
+		else
+			output<< line << std::endl;
 	}
 	if (flag == 404)
 		std::cout<< "<" << this->s1 << "> doesn't exist within the file <" << this->reading_file << ">!" <<std::endl;
